@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <article class="post">
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        {% if post.video %}
+            <center><video  width="250px" display="block" margin="auto" height="250px" controls>
+                <source src="{{ post.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video></center>
+        {% endif %}
+        <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="" style=" width: auto; display: block; margin: auto; ">
+        {% endif %}
+        {% if post.audio %}
+            <img src="{{ post.audio.url }}" alt="" style=" width: auto; display: block; margin: auto; ">
+        {% endif %}
+    </article>
+{% endblock %}
+
